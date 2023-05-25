@@ -32,7 +32,7 @@ jobs:
       run: npm ci --legacy-peer-deps
 
     - name: Run server
-      run: nohup npm run local-qa &
+      run: nohup npm run dev &
 
     - name: Wait for server
       run: |
