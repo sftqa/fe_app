@@ -48,4 +48,4 @@ jobs:
       run: PLAYWRIGHT_BROWSERS_PATH=$HOME/pw-browsers npx playwright install --with-deps chromium
 
     - name: Execute UI tests
-      run: PLAYWRIGHT_BROWSERS_PATH=$HOME/pw-browsers npx playwright test
+      run: PLAYWRIGHT_BROWSERS_PATH=$HOME/pw-browsers npx playwright test --config uiautomation/playwright.config.ts
