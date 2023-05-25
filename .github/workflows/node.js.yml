@@ -49,3 +49,9 @@ jobs:
 
     - name: Execute UI tests
       run: PLAYWRIGHT_BROWSERS_PATH=$HOME/pw-browsers npx playwright test --config uiautomation/playwright.config.ts
+
+    - name: Upload Playwright Report
+      uses: actions/upload-artifact@v2
+      with:
+        name: Playwright Report
+        path: uiautomation/playwright-report/
