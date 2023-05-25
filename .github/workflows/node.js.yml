@@ -52,6 +52,7 @@ jobs:
 
     - name: Upload Playwright Report
       uses: actions/upload-artifact@v2
+      if: ${{ failure() }}
       with:
         name: Playwright Report
         path: uiautomation/playwright-report/
