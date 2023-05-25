@@ -13,7 +13,7 @@ test('to Lower case', async ({ upperCasePage }) => {
   await upperCasePage.inputField.fill('NAME');
   await upperCasePage.transformLowerBtn.click();
 
-  await expect(upperCasePage.outputText).toHaveText('Result: name1');
+  await expect(upperCasePage.outputText).toHaveText('Result: name');
 });
 
 test('Empty', async ({ upperCasePage }) => {
