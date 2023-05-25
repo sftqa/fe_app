@@ -35,7 +35,7 @@ jobs:
     - name: Wait for server
       run: |
         timeout=$(( $(date +%s) + 180 ))
-        until curl --output /dev/null --silent --fail http://localhost:3000/my-account/account-details || [[ $(date +%s) -gt $timeout ]]; do
+        until curl --output /dev/null --silent --fail http://localhost:3000/ || [[ $(date +%s) -gt $timeout ]]; do
           echo "Waiting for server..."
           sleep 5
         done
