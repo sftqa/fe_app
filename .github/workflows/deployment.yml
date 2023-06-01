@@ -8,11 +8,14 @@ jobs:
     steps:
     - name: Trigger Workflow API Call
       run: |
-       curl -X POST \
-       -H "Accept: application/vnd.github.v3+json" \
-       -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-       "https://api.github.com/repos/AndriiFrolov/playwright-portfolio/actions/workflows/playwright.yml/dispatches" \
-       -d '{"ref": "master" }'
+        response=$(curl -X POST \
+        -H "Accept: application/vnd.github.v3+json" \
+        -H "Authorization: my token" \
+        -w "%{http_code}" \
+        -o /dev/null \
+        "https://api.github.com/repos/AndriiFrolov/playwright-portfolio/actions/workflows/playwright.yml/dispatches" \
+        -d '{"ref": "master"}')
+        echo "Response Status Code: $response"
        
        
 #       - name: Checkout
