@@ -11,6 +11,6 @@ jobs:
       - name: Trigger workflow in another repository
         uses: AndriiFrolov/playwright-portfolio@master
         with:
-          workflow: custom-workflow-file-name.yml
+          workflow: playwright.yml
             
             
