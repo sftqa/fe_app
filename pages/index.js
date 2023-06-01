@@ -20,7 +20,7 @@ export default function IndexPage() {
     <div>
         <input onChange={e => setWord(e.target.value)} value = {word}></input>
         <button onClick={transformLower}>transform lower</button>
-        <button onClick={transformUpper}>transform upper</button>
+        <button onClick={transformUpper}>transform upper33333</button>
         <h2>Result: hahaha</h2>
     </div>
   )
