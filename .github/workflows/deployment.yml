@@ -1,16 +1,16 @@
-# We are using Playwright but you may use your E2E framework of choice
-name: Playwright Tests
-
+name: ci
 on:
-  deployment_status:
-
-  run-e2es:
-    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
-    runs-on: ubuntu-latest
+  [deployment_status]
+jobs:
+  e2e:
+    if: github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-20.04
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Run autotests
         uses: AndriiFrolov/playwright-portfolio@master
-        with:
-          workflow: workflow-file-name.yml
-          env:
-            BASE_URL: ${{ github.event.deployment_status.target_url }}
+        env:
+          BASE_URL: ${{ github.event.deployment_status.target_url }
+            
+            
