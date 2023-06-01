@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -26,6 +26,33 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run server
+      run: nohup npm run dev &
+
+    - name: Wait for server
+      run: |
+        timeout=$(( $(date +%s) + 180 ))
+        until curl --output /dev/null --silent --fail http://localhost:3000/ || [[ $(date +%s) -gt $timeout ]]; do
+          echo "Waiting for server..."
+          sleep 5
+        done
+        if [[ $(date +%s) -gt $timeout ]]; then
+          echo "Server did not start within the timeout period."
+          exit 1
+        fi
+
+    - name: Install Playwright
+      run: PLAYWRIGHT_BROWSERS_PATH=$HOME/pw-browsers npx playwright install --with-deps chromium
+
+    - name: Execute UI tests
+      run: PLAYWRIGHT_BROWSERS_PATH=$HOME/pw-browsers npx playwright test --config uiautomation/playwright.config.ts
+
+    - name: Upload Playwright Report
+      uses: actions/upload-artifact@v2
+      if: ${{ failure() }}
+      with:
+        name: Playwright Report
+        path: uiautomation/playwright-report/
