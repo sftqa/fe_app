@@ -5,7 +5,7 @@ test('to Upper case', async ({ upperCasePage }) => {
   await upperCasePage.inputField.fill('name');
   await upperCasePage.transformUpperBtn.click();
 
-  await expect(upperCasePage.outputText).toHaveText('Result: NAME');
+  await expect(upperCasePage.outputText).toHaveText('Result: hahaha');
 });
 
 test('to Lower case', async ({ upperCasePage }) => {
@@ -13,7 +13,7 @@ test('to Lower case', async ({ upperCasePage }) => {
   await upperCasePage.inputField.fill('NAME');
   await upperCasePage.transformLowerBtn.click();
 
-  await expect(upperCasePage.outputText).toHaveText('Result: name');
+  await expect(upperCasePage.outputText).toHaveText('Result: hahaha');
 });
 
 test('Empty', async ({ upperCasePage }) => {
@@ -21,5 +21,5 @@ test('Empty', async ({ upperCasePage }) => {
   await upperCasePage.inputField.fill('');
   await upperCasePage.transformUpperBtn.click();
 
-  await expect(upperCasePage.outputText).toHaveText('Result: Word should not be empty');
+  await expect(upperCasePage.outputText).toHaveText('Result: hahaha');
 });
