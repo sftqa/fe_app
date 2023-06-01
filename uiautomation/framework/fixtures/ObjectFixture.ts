@@ -1,6 +1,6 @@
-import { test as base, chromium, type BrowserContext } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
-import { UpperCasePage } from '../pages/UpperCasePage';
+import { test as base, chromium, type BrowserContext } from "@playwright/test";
+import { LoginPage } from "../pages/other/LoginPage";
+import { UpperCasePage } from "../pages/other/UpperCasePage";
 
 // const testWithExtension = base.extend<{
 //   context: BrowserContext;
@@ -37,17 +37,17 @@ import { UpperCasePage } from '../pages/UpperCasePage';
 // });
 
 type Objects = {
-    loginPage: LoginPage;
-    upperCasePage: UpperCasePage;
-}
+  loginPage: LoginPage;
+  upperCasePage: UpperCasePage;
+};
 
 const testExtendedWithPages = base.extend<Objects>({
-    loginPage: async ({ page }, use) => {
-        await use(new LoginPage(page));
-      },
-      upperCasePage: async ({ page }, use) => {
-        await use(new UpperCasePage(page));
-      }
-    });     
-export const test = testExtendedWithPages; 
+  loginPage: async ({ page }, use) => {
+    await use(new LoginPage(page));
+  },
+  upperCasePage: async ({ page }, use) => {
+    await use(new UpperCasePage(page));
+  },
+});
+export const test = testExtendedWithPages;
 export const expect = test.expect;

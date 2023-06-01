@@ -1,5 +1,5 @@
 import { Locator, Page } from '@playwright/test';
-import { BasePage } from '../pages/BasePage'
+import { BasePage } from '../BasePage'
 
 
 export class LoginPage extends BasePage {
@@ -15,4 +15,7 @@ export class LoginPage extends BasePage {
     await this.passwordInput.fill(password);
     await this.submitBtn.click();
   }
+
+  //andrey.frolov.ua@gmail.com
+  //EN@BWS2VMVENTkv
 }
