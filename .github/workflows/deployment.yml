@@ -9,8 +9,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Trigger workflow in another repository
-        uses: AndriiFrolov/playwright-portfolio@master
+        uses: peter-evans/workflow-dispatch@v1
         with:
           workflow: playwright.yml
-            
-            
+          repository: AndriiFrolov/playwright-portfolio
+          ref: master  # Replace with the desired branch or tag  
+#       - name: Trigger workflow in another repository
+#         uses: AndriiFrolov/playwright-portfolio@master
+#         with:
+#           workflow: playwright.yml
+        
