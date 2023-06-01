@@ -11,6 +11,6 @@ jobs:
       - name: Run autotests
         uses: AndriiFrolov/playwright-portfolio@master
         env:
-          BASE_URL: ${{ github.event.deployment_status.target_url }
+          BASE_URL: ${{ github.event.deployment_status.target_url }}
             
             
