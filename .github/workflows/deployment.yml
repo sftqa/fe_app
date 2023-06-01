@@ -9,7 +9,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Trigger workflow in another repository
-        uses: peter-evans/workflow-dispatch@v1
         with:
           workflow: playwright.yml
           repository: AndriiFrolov/playwright-portfolio
