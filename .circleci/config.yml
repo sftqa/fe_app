@@ -12,7 +12,6 @@ jobs:
               --header "Content-Type: application/json" \
               --data '{"branch": "master", "parameters": {"CIRCLE_SHA1": "'$CIRCLE_SHA1'"}}')
 
-
 #            pipeline_id=$(echo "$response" | jq -r '.id')
 #
 #            start_time=$(date +%s)
