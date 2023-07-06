@@ -1,0 +1,22 @@
+version: 2.1
+workflows:
+  version: 2
+  build-and-trigger:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: master
+
+jobs:
+  build:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - run:
+          name: Trigger Pipeline
+          command: |
+            curl -X POST https://circleci.com/api/v2/project/github/AndriiFrolov/playwright-circleci-allure/pipeline \
+              --header "Circle-Token: CCIPAT_BUMzyWpfgC9fkudmkjKhZj_040bce6997b19ae833da6ca01db8931d6f4e3aef" \
+              --header "content-type: application/json" \
+              --data '{"branch":"master"}'
