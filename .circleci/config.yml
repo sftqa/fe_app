@@ -7,13 +7,14 @@ jobs:
       - run:
           name: Trigger Pipeline
           command: |
-            response=$(curl -s -X POST https://circleci.com/api/v2/project/github/AndriiFrolov/playwright-circleci-allure/pipeline \
-              --header "Circle-Token: CCIPAT_BUMzyWpfgC9fkudmkjKhZj_040bce6997b19ae833da6ca01db8931d6f4e3aef" \
+            response=$(curl -s -X POST https://circleci.com/api/v2/project/github/sftqa/qa \
+              --header "pipeline: CCIPAT_Jnfh15WJdcogqrApmrFpUH_bf6d609c14c952d55be9c8a999afb5bf4733aaeb" \
               --header "Content-Type: application/json" \
               --data '{"branch": "master", "parameters": {"commit": "'$CIRCLE_SHA1'"}}')
           environment:
             COMMIT: $CIRCLE_SHA1
-#            pipeline_id=$(echo "$response" | jq -r '.id')
+# CCIPAT_Jnfh15WJdcogqrApmrFpUH_bf6d609c14c952d55be9c8a999afb5bf4733aaeb           
+# pipeline_id=$(echo "$response" | jq -r '.id')
 #
 #            start_time=$(date +%s)
 #            timeout=60  # 1 minute timeout
