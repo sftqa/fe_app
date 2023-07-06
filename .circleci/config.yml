@@ -4,9 +4,6 @@ workflows:
   build-and-trigger:
     jobs:
       - build:
-          filters:
-            branches:
-              only: main
 
 
 jobs:
