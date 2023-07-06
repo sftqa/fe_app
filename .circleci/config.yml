@@ -11,7 +11,8 @@ jobs:
               --header "Circle-Token: CCIPAT_BUMzyWpfgC9fkudmkjKhZj_040bce6997b19ae833da6ca01db8931d6f4e3aef" \
               --header "Content-Type: application/json" \
               --data '{"branch": "master", "parameters": {"COMMIT": "'$CIRCLE_SHA1'"}}')
-
+          environment:
+            COMMIT: $CIRCLE_SHA1
 #            pipeline_id=$(echo "$response" | jq -r '.id')
 #
 #            start_time=$(date +%s)
