@@ -8,7 +8,7 @@ jobs:
           name: Trigger Pipeline
           command: |
             response=$(curl -s -X POST https://circleci.com/api/v2/project/github/sftqa/qa \
-              --header "pipeline: MYTOKEN" \
+              --header "pipeline: $MYTOKEN" \
               --header "Content-Type: application/json" \
               --data '{"branch": "master", "parameters": {"commit": "'$CIRCLE_SHA1'"}}')
           environment:
